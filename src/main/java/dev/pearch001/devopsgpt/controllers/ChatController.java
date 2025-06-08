@@ -25,9 +25,24 @@ public class ChatController {
         return ResponseEntity.ok("Pong! DevOpsGPT is running.");
     }
 
+    /**
+     * Handles a standard chat message without RAG.
+     */
     @PostMapping("/chat")
     public ResponseEntity<ChatResponse> chat(@Valid @RequestBody ChatRequest chatRequest) {
         String reply = chatService.getChatReply(chatRequest.message());
+        return ResponseEntity.ok(new ChatResponse(reply, chatRequest.sessionId()));
+    }
+
+    /**
+     * Handles a chat message using Retrieval-Augmented Generation (RAG).
+     * It finds relevant documents and uses them to provide a more accurate answer.
+     * @param chatRequest The user's message.
+     * @return A ChatResponse containing the context-aware AI reply.
+     */
+    @PostMapping("/chat/rag")
+    public ResponseEntity<ChatResponse> ragChat(@Valid @RequestBody ChatRequest chatRequest) {
+        String reply = chatService.getRagReply(chatRequest.message());
         return ResponseEntity.ok(new ChatResponse(reply, chatRequest.sessionId()));
     }
 }
