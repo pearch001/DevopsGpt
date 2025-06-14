@@ -1,4 +1,6 @@
 package dev.pearch001.devopsgpt.model;
 
-public record ChatRequest(String message, String sessionId) {
+import jakarta.validation.constraints.NotBlank;
+
+public record ChatRequest(@NotBlank(message = "User message cannot be blank.") String message, @NotBlank(message = "Session ID cannot be blank.") String sessionId) {
 }

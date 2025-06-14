@@ -4,6 +4,7 @@ package dev.pearch001.devopsgpt.controllers;
 
 import dev.pearch001.devopsgpt.model.ChatRequest;
 import dev.pearch001.devopsgpt.model.ChatResponse;
+import dev.pearch001.devopsgpt.model.EnhancedChatResponse;
 import dev.pearch001.devopsgpt.service.ChatService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -44,5 +45,17 @@ public class ChatController {
     public ResponseEntity<ChatResponse> ragChat(@Valid @RequestBody ChatRequest chatRequest) {
         String reply = chatService.getRagReply(chatRequest.message());
         return ResponseEntity.ok(new ChatResponse(reply, chatRequest.sessionId()));
+    }
+
+    /**
+     * The primary, stateful chat endpoint.
+     */
+    @PostMapping("/chat/advanced") // New endpoint for the advanced logic
+    public ResponseEntity<EnhancedChatResponse> advancedChat(@Valid @RequestBody ChatRequest chatRequest) {
+        EnhancedChatResponse response = chatService.getAdvancedReply(
+                chatRequest.sessionId(),
+                chatRequest.message()
+        );
+        return ResponseEntity.ok(response);
     }
 }

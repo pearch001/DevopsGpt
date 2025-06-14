@@ -3,6 +3,9 @@
 server:
   port: 8080
 
+aws:
+  region: ${AWS_Region}
+
 spring:
   application:
     name: DevOpsGPT
@@ -12,7 +15,7 @@ spring:
       api-key: ${OPENAI_API_KEY}
       chat:
         options:
-          model: omni-moderation-latest
+          model: gpt-4.1-mini
           temperature: 0.7
 
     vector-store:
@@ -20,7 +23,7 @@ spring:
         collection-name: "devopsgpt-rag-store"
         initialize-schema: true
         client:
-          host: http://localhost
+          host: http://16.171.142.250
           port: 8000
 
 

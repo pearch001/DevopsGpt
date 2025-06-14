@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: dev.pearch001.devopsgpt.ApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.045 s -- in dev.pearch001.devopsgpt.ApplicationTests
