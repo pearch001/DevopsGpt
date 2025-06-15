@@ -46,9 +46,15 @@ public class ReasoningEngine {
         String awsResult;
         switch (state.getCurrentIntent()) {
             case AWS_EC2_START_INSTANCE:
-                String instanceId = (String) state.getSlots().get("instanceId");
-                if (instanceId == null) return new EnhancedChatResponse("Please provide an instance ID (e.g., i-12345abcdef).", List.of());
-                awsResult = awsToolExecutor.startEc2Instance(instanceId);
+                String startInstanceId = (String) state.getSlots().get("instanceId");
+                if (startInstanceId == null) return new EnhancedChatResponse("Please provide an instance ID (e.g., i-12345abcdef).", List.of());
+                awsResult = awsToolExecutor.startEc2Instance(startInstanceId);
+                return new EnhancedChatResponse(awsResult, List.of());
+
+            case AWS_EC2_STOP_INSTANCE:
+                String stopInstanceId = (String) state.getSlots().get("instanceId");
+                if (stopInstanceId == null) return new EnhancedChatResponse("Please provide an instance ID (e.g., i-12345abcdef).", List.of());
+                awsResult = awsToolExecutor.stopEc2Instance(stopInstanceId);
                 return new EnhancedChatResponse(awsResult, List.of());
 
             case AWS_S3_LIST_BUCKETS:

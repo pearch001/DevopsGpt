@@ -14,7 +14,7 @@ public class DialogueState {
         AWS_EC2_START_INSTANCE,
         AWS_S3_LIST_BUCKETS,
         AWS_CLOUDWATCH_GET_METRICS,
-        UNKNOWN
+        AWS_EC2_STOP_INSTANCE, UNKNOWN
     }
 
     @Setter

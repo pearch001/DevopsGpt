@@ -58,14 +58,12 @@ public class CommandService {
             {format}
             """;
 
-        /*String response = chatClient.prompt()
+        String response = chatClient.prompt()
                 .system(p -> p.text(systemPrompt).param("format", outputParser.getFormat()))
                 .user(task)
-                .call().content();*/
+                .call().content();
 
-        String response = "{\n" +
-                "  \"explanation\": \"(Mocked LLM response): Waht is s3...\"\n" +
-                "}";
+
 
         // The parser automatically converts the LLM's JSON output into our Java bean.
         if (response == null) {

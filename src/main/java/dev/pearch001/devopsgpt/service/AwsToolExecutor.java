@@ -7,6 +7,7 @@ import software.amazon.awssdk.services.cloudwatch.CloudWatchClient;
 import software.amazon.awssdk.services.cloudwatch.model.*;
 import software.amazon.awssdk.services.ec2.Ec2Client;
 import software.amazon.awssdk.services.ec2.model.StartInstancesRequest;
+import software.amazon.awssdk.services.ec2.model.StopInstancesRequest;
 import software.amazon.awssdk.services.s3.S3Client;
 import software.amazon.awssdk.services.s3.model.Bucket;
 
@@ -38,6 +39,18 @@ public class AwsToolExecutor {
         logger.info("Executing AWS action: Starting EC2 instance '{}'", instanceId);
         StartInstancesRequest request = StartInstancesRequest.builder().instanceIds(instanceId).build();
         ec2Client.startInstances(request);
+        return String.format("✅ Action sent: EC2 instance %s is being started.", instanceId);
+    }
+
+    /**
+     * Starts an EC2 instance.
+     * @param instanceId The ID of the instance to start.
+     * @return A confirmation message.
+     */
+    public String stopEc2Instance(String instanceId) {
+        logger.info("Executing AWS action: Starting EC2 instance '{}'", instanceId);
+        StopInstancesRequest request = StopInstancesRequest.builder().instanceIds(instanceId).build();
+        ec2Client.stopInstances(request);
         return String.format("✅ Action sent: EC2 instance %s is being started.", instanceId);
     }
 
