@@ -1,4 +1,3 @@
-Here is a comprehensive `README.md` file for your application:
 
 ```markdown
 # DevOpsGPT

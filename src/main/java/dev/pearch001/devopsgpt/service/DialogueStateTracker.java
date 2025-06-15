@@ -26,7 +26,7 @@ public class DialogueStateTracker {
             state.setCurrentIntent(DialogueState.Intent.AWS_EC2_START_INSTANCE);
             extractInstanceId(state, userInput);
         } else if (lowerInput.contains("stop") && lowerInput.contains("ec2 instance")) {
-            state.setCurrentIntent(DialogueState.Intent.AWS_EC2_START_INSTANCE);
+            state.setCurrentIntent(DialogueState.Intent.AWS_EC2_STOP_INSTANCE);
             extractInstanceId(state, userInput);
         } else if (lowerInput.contains("list") && lowerInput.contains("s3 buckets")) {
             state.setCurrentIntent(DialogueState.Intent.AWS_S3_LIST_BUCKETS);
