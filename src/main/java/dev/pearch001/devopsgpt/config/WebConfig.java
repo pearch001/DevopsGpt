@@ -17,7 +17,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addMapping("/api/**") // Apply this rule to all endpoints under /api/
 
                 // Allow requests from our React development server.
-                .allowedOrigins("http://localhost:3000")
+                .allowedOrigins("*")
 
                 // Allow standard HTTP methods. 'OPTIONS' is crucial for preflight requests.
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
